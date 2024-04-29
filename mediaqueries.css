@@ -1,0 +1,40 @@
+@media screen and (max-width: 768px){
+    #desktop-nav{
+        display: none;
+    }
+    #hamburger-nav{
+        display: flex;
+    }
+    .arrow-up{
+        display: none;
+    }
+    .arrow-down{
+        display: none;
+    }
+
+    /*SECTIONS*/
+    section{margin: 0 6rem; height: 100vh; background-color: aqua;}
+    .section_pic-container{height: 250px;width: 250px;}
+    .icon{height: 1.5rem;}
+
+    /*TEXT*/
+    .title{font-size: 2rem;}
+    h2{font-size: 1.5rem;}
+    p{font-size: small;}
+    
+    /*PROFILE*/
+    #profile{gap: 3rem; height: 80vh;}
+    #jaromob-title{height: 100px;}
+    .section_text p{font-weight: 300;}
+    .section_text_p2{font-size: 1.2rem;}
+
+    /*ABOUT*/
+    .about-containers{gap: 0.5rem;}
+    .section-container{gap: 1.2rem;}
+    .text-container{display: none;}
+
+    /*COMMISSIONS*/
+    article{
+        width: 7.5rem;
+    }
+}
