@@ -1,3 +1,6 @@
+@media screen and (max-width: 1024px){
+    section{margin: 0 6rem; height: 100vh;}
+}
 @media screen and (max-width: 768px){
     #desktop-nav{
         display: none;
@@ -13,7 +16,7 @@
     }
 
     /*SECTIONS*/
-    section{margin: 0 6rem; height: 100vh; background-color: aqua;}
+    section{margin: 0 6rem; height: 100vh;}
     .section_pic-container{height: 250px;width: 250px;}
     .icon{height: 1.5rem;}
 
@@ -38,3 +41,14 @@
         width: 7.5rem;
     }
 }
+/* @media screen and (max-width: 425px) */
+@media screen and (max-width: 425px){
+    #hamburger-nav{
+        width: 157%;
+    }
+    .hamburger-menu{
+        margin-left: 10rem;
+    }
+}
+/* @media screen and (max-width: 375px) */
+/* @media screen and (max-width: 320px) */
