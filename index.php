@@ -189,15 +189,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="articles">
                     <div class="article-container">
                         <img src="./assets/program-1.png" alt="Latest Artwork" class="project-img">
-                        <p class="project-title">KRADJ Express (SSTF Sim)</p>
+                        <p class="project-title">KRADJ Express</p>
                     </div>
                     <div class="article-container">
                         <img src="./assets/program-2.png" alt="Latest Artwork" class="project-img">
-                        <p class="project-title">HomeForest (Binary Tree Sim)</p>
+                        <p class="project-title">HomeForest</p>
                     </div>
                     <div class="article-container">
                         <img src="./assets/program-3.png" alt="Latest Artwork" class="project-img">
-                        <p class="project-title">The Proverbs App (List Data Structure)</p>
+                        <p class="project-title">The Proverbs App</p>
                     </div>
                 </div>
                 <div class="btn-container">

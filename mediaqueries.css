@@ -42,13 +42,23 @@
     }
 }
 /* @media screen and (max-width: 425px) */
-@media screen and (max-width: 425px){
+@media screen and (max-width: 426px){
     #hamburger-nav{
         width: 157%;
     }
     .hamburger-menu{
         margin-left: 10rem;
     }
+    *{background-color: #090909;}
+    body{display: none;}
 }
 /* @media screen and (max-width: 375px) */
+@media screen and (max-width: 375px){
+    *{background-color: #090909;}
+    body{display: none;}
+}
 /* @media screen and (max-width: 320px) */
+@media screen and (max-width: 320px){
+    *{background-color: #090909;}
+    body{display: none;}
+}
