@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span></span>
             </div>
             <div class="menu-links">
-                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#about" onclick="togglseMenu()">About</a></li>
                 <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
                 <li><a href="#commissions" onclick="toggleMenu()">Commissions</a></li>
                 <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
