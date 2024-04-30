@@ -49,7 +49,17 @@
     .hamburger-menu{
         margin-left: 10rem;
     }
+
+    /*SECTIONS*/
+    section{margin: 0 6rem; height: 100vh; background-color: aqua;}
 }
 /* @media screen and (max-width: 375px) */
-
+@media screen and (max-width: 375px){
+    *{background-color: #090909;}
+    body{display: none;}
+}
 /* @media screen and (max-width: 320px) */
+@media screen and (max-width: 320px){
+    *{background-color: #090909;}
+    body{display: none;}
+}
