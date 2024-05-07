@@ -56,6 +56,7 @@ if ($conn->connect_error) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAROMOB | Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="assets/jaromob-icon.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
 </head>
