@@ -64,7 +64,7 @@ if ($conn->connect_error) {
     <!-- Desktop Navigation -->
     <nav id="desktop-nav">
         <div class="logo">
-            <h1 onclick="location.href='index.html'">JAROMOB</h1>
+            <h1 onclick="location.href='index.php'">JAROMOB</h1>
         </div>
         <div>
             <ul class="nav-links">
@@ -79,7 +79,7 @@ if ($conn->connect_error) {
     <!-- Mobile Navigation -->
     <nav id="hamburger-nav">
         <div class="logo">
-            <h1>JAROMOB</h1>
+            <h1 onclick="location.href='index.php'">JAROMOB</h1>
         </div>
         <div class="hamburger-menu">
             <div class="hamburger-icon" onclick="toggleMenu()">
@@ -343,7 +343,8 @@ if ($conn->connect_error) {
                             <textarea class="input-box" name="message" rows="8" required></textarea>
                         </div>
 
-                        <div class="captcha">
+                        <div class="input-container">
+                            <p></p>
                             <div class="h-captcha" data-captcha="true"></div>
                         </div>
 
