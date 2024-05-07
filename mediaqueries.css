@@ -34,7 +34,7 @@
     /*ABOUT*/
     .about-containers{gap: 0.5rem;}
     .section-container{gap: 1.2rem;}
-    .text-container{display: none;}
+    .text-container{display: flex; flex-direction: column;}
 
     /*COMMISSIONS*/
     article{
@@ -83,10 +83,10 @@
     /*ABOUT*/
     #about{
         margin: 5rem;
-        height: 200vh;
+        height: auto;
     }
     #about .section-container{margin-top: 2rem; display: flex; flex-direction: column;}
-    #about .about-containers{height: 60vh;}
+    #about .about-containers{height: 66vh;}
 
     /*PROJECTS*/
     .project-details-container{padding: 0;}
@@ -127,6 +127,10 @@
 
 /* @media screen and (max-width: 375px) */
 @media screen and (max-width: 376px){
+    #about .about-details-container{margin-top: 4rem;}
+    #about .about-containers{height: 70vh; display: flex; flex-direction: column; justify-content: center;}
+    #about .text-container{margin-top: 4rem;}
+    /*PROJECTS*/
     .articles{
         margin-left: 7.7rem;
     }
@@ -134,11 +138,10 @@
 /* @media screen and (max-width: 320px) */
 @media screen and (max-width: 321px){
     /*ABOUT*/
-    #about{height:210vh;}
     .about-details-container{
         margin-top: 5rem;
     }
-    #about .about-containers{display: flex; flex-direction: column; justify-content: center;}
+    #about .about-containers{height: 70vh; display: flex; flex-direction: column; justify-content: center;}
 
     /*PROJECTS*/
     .articles{

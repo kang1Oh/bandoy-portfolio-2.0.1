@@ -262,6 +262,9 @@ section{
     margin: auto 0;
     align-self: center;
 }
+.text-container p{
+    text-align:center;
+}
 
 /*PROJECTS SECTION*/
 #projects{
