@@ -43,13 +43,111 @@
 }
 /* @media screen and (max-width: 425px) */
 @media screen and (max-width: 426px){
-    #hamburger-nav{
+    body{
         width: 157%;
     }
     .hamburger-menu{
         margin-left: 10rem;
     }
-}
-/* @media screen and (max-width: 375px) */
 
+    /*SECTIONS*/
+    section{margin: 6rem 0; height: 200vh; display: flex; flex-direction: column;}
+
+    /*TEXT*/
+    .title{font-size: 2.5rem; margin: 2rem;}
+    h2{font-size: 2rem;}
+    h3{font-size: 2rem; margin: 1rem auto;}
+    p{font-size: larger; font-weight: 600;}
+
+    /*BUTTONS & ICONS*/
+    .btn{
+        font-size: 1.3rem;
+        width: 15rem;
+        height: 5rem;
+    }
+    .icon{
+        height: 3rem;
+    }
+
+    /*PROFILE*/
+    #profile{
+        margin: 3rem auto;
+        height: 200vh;
+    }
+    .section_pic-container{width: 400px; height: 400px;}
+    .section_pic-container img{width: 400px; height: 400px;}
+    #jaromob-title{height: 200px; margin: 1rem auto;}
+    .section_text_p1{font-size: 1.5rem;}
+    .section_text_p2{font-size: 2rem;}
+
+    /*ABOUT*/
+    #about{
+        margin: 5rem;
+        height: 200vh;
+    }
+    #about .section-container{margin-top: 2rem; display: flex; flex-direction: column;}
+    #about .about-containers{height: 60vh;}
+
+    /*PROJECTS*/
+    .project-details-container{padding: 0;}
+    .article-container{height: 70vh; display: flex; flex-direction: column; justify-content: center;}
+    article{
+        width: 10rem;
+        height: 10rem;
+    }
+    .project-img{
+        width: 55vh;
+        height: 55vh;
+    }
+    #projects .btn{
+        width: 15rem;
+    }
+
+    /*COMMISSIONS*/
+    #commissions{height: auto;}
+    #commissions .about-containers{display: flex; flex-direction: column; justify-content: center; margin: auto 10rem; margin-bottom: 2rem;}
+    .details-container{margin-bottom: 1rem;}
+    #commissions article{width: 15rem; height: 5rem; padding: 2rem auto;}
+    .article-container div{
+        padding: 0.5rem;
+    }
+
+    /*CONTACT*/
+    .input-container{
+        margin: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .input-box{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        font-weight: bolder;
+    }
+}
+
+/* @media screen and (max-width: 375px) */
+@media screen and (max-width: 376px){
+    .articles{
+        margin-left: 7.7rem;
+    }
+}
 /* @media screen and (max-width: 320px) */
+@media screen and (max-width: 321px){
+    /*ABOUT*/
+    #about{height:210vh;}
+    .about-details-container{
+        margin-top: 5rem;
+    }
+    #about .about-containers{display: flex; flex-direction: column; justify-content: center;}
+
+    /*PROJECTS*/
+    .articles{
+        margin-left: 5rem;
+    }
+
+    /*COMMISSIONS*/
+    #commissions .about-containers{
+        width: 20rem;
+        margin-left: 6rem;
+    }
+}
