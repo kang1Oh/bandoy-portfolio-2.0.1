@@ -13,40 +13,40 @@ if ($conn->connect_error) {
 } 
 
 // Processing CONTACT ME form data when form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-    //DB INSERTION SECTION
-        // Prepare an insert statement
-        $sql = "INSERT INTO messages (message_from, email, subject, message) VALUES (?, ?, ?, ?)";
+//     //DB INSERTION SECTION
+//         // Prepare an insert statement
+//         $sql = "INSERT INTO messages (message_from, email, subject, message) VALUES (?, ?, ?, ?)";
 
-        if ($stmt = mysqli_prepare($conn, $sql)) {
-            // Bind variables to the prepared statement as parameters 
-            mysqli_stmt_bind_param($stmt, "ssss", $param_name, $param_email, $param_subject, $param_message);
-            //prepared statement and parameter binding sanitizes input data and prevents sql injection attacks
+//         if ($stmt = mysqli_prepare($conn, $sql)) {
+//             // Bind variables to the prepared statement as parameters 
+//             mysqli_stmt_bind_param($stmt, "ssss", $param_name, $param_email, $param_subject, $param_message);
+//             //prepared statement and parameter binding sanitizes input data and prevents sql injection attacks
 
-            // Set variables with user input values
-            $param_name = $_POST["name"];
-            $param_email = $_POST["email"];
-            $param_subject = $_POST["subject"];
-            $param_message = $_POST["message"];
+//             // Set variables with user input values
+//             $param_name = $_POST["name"];
+//             $param_email = $_POST["email"];
+//             $param_subject = $_POST["subject"];
+//             $param_message = $_POST["message"];
 
-            // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-                // Redirect to login page after successful registration
-                header("location: index.php");
-            } else {
-                echo "Something went wrong. Please try again later.";
-            }
+//             // Attempt to execute the prepared statement
+//             if (mysqli_stmt_execute($stmt)) {
+//                 // Redirect to login page after successful registration
+//                 header("location: index.php");
+//             } else {
+//                 echo "Something went wrong. Please try again later.";
+//             }
 
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
+//             // Close statement
+//             mysqli_stmt_close($stmt);
+//         }
     
 
-    // Close connection
-    mysqli_close($conn);
-}
+//     // Close connection
+//     mysqli_close($conn);
+// }
 ?>
 
 
@@ -316,8 +316,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <img src="./assets/up.png" alt="arrow up" class="icon arrow-up" onclick="location.href='./#commissions'">
         <h1 class="title">Send Me a Message</h1>
             <div class="contact-info-container">
-                <form class="contact-form" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
                     <div class="contact-details">
+
+                        <!-- CONTACT ME API customization -->
+                        <input type="hidden" name="access_key" value="3ad8ac47-931b-4aa8-b96c-15df7e8b2ad1">
+                        <input type="hidden" name="from_name" value="JAROMOB">
+                        <input type="hidden" name="replyto" value="email">
+
+
                         <div class="input-container">
                             <p>Your Name</p>
                             <input type="text" class="input-box" name="name" required/> <br>
@@ -335,9 +342,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <textarea class="input-box" name="message" rows="8" required></textarea>
                         </div>
 
-                        <div class="btn-container">
-                            <button type="submit" class="btn btn-color-1"  name="submit">Send Message</button>
+                        <div class="captcha">
+                            <div class="h-captcha" data-captcha="true"></div>
                         </div>
+
+                        <div class="btn-container">
+                            <button type="submit" class="btn btn-color-1">Send Message</button>
+                        </div>
+
                     </div>    
                 </form>
             </div>         
@@ -346,6 +358,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <footer>
         <p>Copyright © JAROMOB 2023-2024. All Rights Reserved. | Thank you for visiting the website!</p>
     </footer>
+    <script src="https://web3forms.com/client/script.js" async defer></script>
     <script src="script.js"></script>
 </body>
 </html>
