@@ -131,7 +131,7 @@ if ($conn->connect_error) {
         <div class="section-container">
             <!-- about me picture -->
             <div class="section_pic-container">
-                <img src="./assets/profile-pic-square.png" alt="JAROMOB profile picture" class="about-pic">
+                <img src="./assets/about-image.png" alt="JAROMOB profile picture" class="about-pic">
             </div>
             <!-- about me details -->
             <div class="about-details-container">
