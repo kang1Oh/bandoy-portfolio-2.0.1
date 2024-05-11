@@ -40,6 +40,17 @@
     article{
         width: 7.5rem;
     }
+
+    /*LOGIN*/
+    #login{
+        display: none;
+    }
+    #login-mobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
 }
 /* @media screen and (max-width: 425px) */
 @media screen and (max-width: 426px){

@@ -376,3 +376,41 @@ footer{
 footer p{
     text-align: center;
 }
+
+/*LOGIN PAGE*/
+#login{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.header-text #warning{
+    font-size: 10vh;
+}
+.login-pic-container img{
+    width: 60vh;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+.login-form label{
+    color: #212f5c;
+}
+.login-form div{
+    margin: 0.5rem;
+    justify-content: space-evenly;
+}
+.login-form .input-box{
+    padding: 0.5rem;
+    width: 15rem;
+    background-color: #b70202;
+    color: #c2c2c2;
+}
+.login-form .input-box:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #b70202 inset;
+}
+#login-mobile{
+    display: none;
+}
+.login-form #error{
+    color: #b70202;
+    font-size: small;
+}

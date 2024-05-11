@@ -12,41 +12,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-// Processing CONTACT ME form data when form is submitted
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
-//     //DB INSERTION SECTION
-//         // Prepare an insert statement
-//         $sql = "INSERT INTO messages (message_from, email, subject, message) VALUES (?, ?, ?, ?)";
-
-//         if ($stmt = mysqli_prepare($conn, $sql)) {
-//             // Bind variables to the prepared statement as parameters 
-//             mysqli_stmt_bind_param($stmt, "ssss", $param_name, $param_email, $param_subject, $param_message);
-//             //prepared statement and parameter binding sanitizes input data and prevents sql injection attacks
-
-//             // Set variables with user input values
-//             $param_name = $_POST["name"];
-//             $param_email = $_POST["email"];
-//             $param_subject = $_POST["subject"];
-//             $param_message = $_POST["message"];
-
-//             // Attempt to execute the prepared statement
-//             if (mysqli_stmt_execute($stmt)) {
-//                 // Redirect to login page after successful registration
-//                 header("location: index.php");
-//             } else {
-//                 echo "Something went wrong. Please try again later.";
-//             }
-
-//             // Close statement
-//             mysqli_stmt_close($stmt);
-//         }
-    
-
-//     // Close connection
-//     mysqli_close($conn);
-// }
 ?>
 
 
@@ -189,15 +154,15 @@ if ($conn->connect_error) {
                 <h2 class="subtitle">IN PROGRAMMING</h2>
                 <div class="articles">
                     <div class="article-container">
-                        <img src="./assets/program-1.png" alt="Latest Artwork" class="project-img">
+                        <img src="./assets/program-1.png" alt="Latest Program" class="project-img">
                         <p class="project-title">KRADJ Express</p>
                     </div>
                     <div class="article-container">
-                        <img src="./assets/program-2.png" alt="Latest Artwork" class="project-img">
+                        <img src="./assets/program-2.png" alt="Latest Program" class="project-img">
                         <p class="project-title">HomeForest</p>
                     </div>
                     <div class="article-container">
-                        <img src="./assets/program-3.png" alt="Latest Artwork" class="project-img">
+                        <img src="./assets/program-3.png" alt="Latest Program" class="project-img">
                         <p class="project-title">The Proverbs App</p>
                     </div>
                 </div>
@@ -209,15 +174,15 @@ if ($conn->connect_error) {
                 <h2 class="subtitle">IN GAME DEVELOPMENT</h2>
                 <div class="articles">
                     <div class="article-container">
-                        <img src="./assets/games-coming-soon.png" alt="Latest Artwork" class="project-img">
+                        <img src="./assets/games-coming-soon.png" alt="Latest Game" class="project-img">
                         <p class="project-title">COMING SOON</p>
                     </div>
                     <div class="article-container">
-                        <img src="./assets/games-coming-soon.png" alt="Latest Artwork" class="project-img">
+                        <img src="./assets/games-coming-soon.png" alt="Latest Game" class="project-img">
                         <p class="project-title">COMING SOON</p>
                     </div>
                     <div class="article-container">
-                        <img src="./assets/games-coming-soon.png" alt="Latest Artwork" class="project-img">
+                        <img src="./assets/games-coming-soon.png" alt="Latest Game" class="project-img">
                         <p class="project-title">COMING SOON</p>
                     </div>
                 </div>
