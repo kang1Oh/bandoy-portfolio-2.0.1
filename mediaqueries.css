@@ -42,15 +42,16 @@
     }
 
     /*LOGIN*/
-    #login{
+    #admin{
         display: none;
     }
-    #login-mobile{
+    #admin-mobile{
         display: flex;
         flex-direction: column;
         justify-content: center;
         text-align: center;
     }
+    
 }
 /* @media screen and (max-width: 425px) */
 @media screen and (max-width: 426px){

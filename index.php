@@ -1,16 +1,5 @@
 <?php
-//CHANGE VARIABLE NAMES WHEN DEPLOYING TO INFINITYFREE
-$servername = "localhost"; //CHANGE THIS
-$username = "root"; //CHANGE THIS
-$password = ""; //CHANGE THIS
-$dbname = "jrmb_portfolio_db"; //CHANGE THIS
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+    require_once 'dbConfig.php'; 
 
 ?>
 
@@ -282,6 +271,7 @@ if ($conn->connect_error) {
         <img src="./assets/up.png" alt="arrow up" class="icon arrow-up" onclick="location.href='./#commissions'">
         <h1 class="title">Send Me a Message</h1>
             <div class="contact-info-container">
+                
                 <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
                     <div class="contact-details">
 

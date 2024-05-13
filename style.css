@@ -377,8 +377,8 @@ footer p{
     text-align: center;
 }
 
-/*LOGIN PAGE*/
-#login{
+/*ADMIN LOGIN PAGE*/
+#admin{
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -407,10 +407,15 @@ footer p{
 .login-form .input-box:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #b70202 inset;
 }
-#login-mobile{
+#admin-mobile{
     display: none;
 }
 .login-form #error{
     color: #b70202;
     font-size: small;
 }
+.timeout-message{
+    margin-bottom: 2rem;
+}
+
+/*ADMIN PAGE*/
