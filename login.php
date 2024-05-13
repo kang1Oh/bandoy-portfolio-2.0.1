@@ -123,7 +123,7 @@
                 <div>
                     <input type="submit" value="Log In" class="btn btn-color-1">
                 </div>
-                <p id="error"><?php echo $errormsg?></p>
+                <p id="status"><?php echo $errormsg?></p>
             </form>
         </div>
     </div>

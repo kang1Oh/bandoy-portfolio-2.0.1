@@ -410,7 +410,7 @@ footer p{
 #admin-mobile{
     display: none;
 }
-.login-form #error{
+.login-form #status{
     color: #b70202;
     font-size: small;
 }
@@ -419,3 +419,44 @@ footer p{
 }
 
 /*ADMIN PAGE*/
+/*ABOUT SECTION*/
+#edit-about{
+    height: 100%;
+}
+.tab-container{
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem auto;
+}
+
+.tab-1{
+    display: inline;
+    padding: 1rem 3rem;
+}
+.tab-1 div{
+    margin: 1rem auto;
+}
+.tab-2{
+    display: inline;
+    padding: 1rem 3rem;
+}
+.tab-2 div{
+    margin: 1rem auto;
+}
+.exp-details .input-box{
+    width: 15rem;
+}
+
+.about-container{
+    margin-bottom: 2rem;
+}
+.about-container div{
+    padding: 1rem 3rem;
+}
+.about-container .input-box{
+    width: 75%;
+}
+
+#edit-comms .tab-1{
+    padding: 1rem;
+}
