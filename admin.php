@@ -19,6 +19,49 @@
     //connect to database
     require_once 'dbConfig.php'; 
 
+    //Initialize input-boxes with data from database
+    $sql1 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 1";
+    $sql2 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 2";
+    $sql3 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 3";
+    $tier1 = $conn->query($sql1);
+    $tier2 = $conn->query($sql2);
+    $tier3 = $conn->query($sql3);
+
+    if ($tier1->num_rows > 0) {
+        $row = $tier1->fetch_assoc();
+
+        $t1f1 = $row["feature_one"];
+        $t1f2 = $row["feature_two"];
+        $t1f3 = $row["feature_three"];
+    } else {
+        $t1f1 = "";
+        $t1f2 = "";
+        $t1f3 = "";
+    }
+
+    if ($tier2->num_rows > 0) {
+        $row = $tier2->fetch_assoc();
+
+        $t2f1 = $row["feature_one"];
+        $t2f2 = $row["feature_two"];
+        $t2f3 = $row["feature_three"];
+    } else {
+        $t2f1 = "";
+        $t2f2 = "";
+        $t2f3 = "";
+    }
+
+    if ($tier3->num_rows > 0) {
+        $row = $tier3->fetch_assoc();
+
+        $t3f1 = $row["feature_one"];
+        $t3f2 = $row["feature_two"];
+        $t3f3 = $row["feature_three"];
+    } else {
+        $t3f1 = "";
+        $t3f2 = "";
+        $t3f3 = "";
+    }
     // If the user clicked the logout button
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logout"])) {
         // Unset all session variables (id, username)
@@ -90,49 +133,6 @@
                 }
         //EDIT PROJECTS SECTION
         //EDIT COMMISSIONS SECTION
-            //Initialize input-boxes with data from database
-                $sql1 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 1";
-                $sql2 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 2";
-                $sql3 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 3";
-                $tier1 = $conn->query($sql1);
-                $tier2 = $conn->query($sql2);
-                $tier3 = $conn->query($sql3);
-
-                if ($tier1->num_rows > 0) {
-                    $row = $tier1->fetch_assoc();
-
-                    $t1f1 = $row["feature_one"];
-                    $t1f2 = $row["feature_two"];
-                    $t1f3 = $row["feature_three"];
-                } else {
-                    $t1f1 = "";
-                    $t1f2 = "";
-                    $t1f3 = "";
-                }
-
-                if ($tier2->num_rows > 0) {
-                    $row = $tier2->fetch_assoc();
-
-                    $t2f1 = $row["feature_one"];
-                    $t2f2 = $row["feature_two"];
-                    $t2f3 = $row["feature_three"];
-                } else {
-                    $t2f1 = "";
-                    $t2f2 = "";
-                    $t2f3 = "";
-                }
-
-                if ($tier3->num_rows > 0) {
-                    $row = $tier3->fetch_assoc();
-
-                    $t3f1 = $row["feature_one"];
-                    $t3f2 = $row["feature_two"];
-                    $t3f3 = $row["feature_three"];
-                } else {
-                    $t3f1 = "";
-                    $t3f2 = "";
-                    $t3f3 = "";
-                }
             //Editing Tier 1 in Commissions Section
                 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["tier1-btn"])){
                     $feature1 = $_POST["t1-f1"];
