@@ -20,48 +20,50 @@
     require_once 'dbConfig.php'; 
 
     //Initialize input-boxes with data from database
-    $sql1 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 1";
-    $sql2 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 2";
-    $sql3 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 3";
-    $tier1 = $conn->query($sql1);
-    $tier2 = $conn->query($sql2);
-    $tier3 = $conn->query($sql3);
+        $sql1 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 1";
+        $sql2 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 2";
+        $sql3 = "SELECT feature_one, feature_two, feature_three FROM commissions WHERE id = 3";
+        $tier1 = $conn->query($sql1);
+        $tier2 = $conn->query($sql2);
+        $tier3 = $conn->query($sql3);
 
-    if ($tier1->num_rows > 0) {
-        $row = $tier1->fetch_assoc();
+        if ($tier1->num_rows > 0) {
+            $row = $tier1->fetch_assoc();
 
-        $t1f1 = $row["feature_one"];
-        $t1f2 = $row["feature_two"];
-        $t1f3 = $row["feature_three"];
-    } else {
-        $t1f1 = "";
-        $t1f2 = "";
-        $t1f3 = "";
-    }
+            $t1f1 = $row["feature_one"];
+            $t1f2 = $row["feature_two"];
+            $t1f3 = $row["feature_three"];
+        } else {
+            $t1f1 = "";
+            $t1f2 = "";
+            $t1f3 = "";
+        }
 
-    if ($tier2->num_rows > 0) {
-        $row = $tier2->fetch_assoc();
+        if ($tier2->num_rows > 0) {
+            $row = $tier2->fetch_assoc();
 
-        $t2f1 = $row["feature_one"];
-        $t2f2 = $row["feature_two"];
-        $t2f3 = $row["feature_three"];
-    } else {
-        $t2f1 = "";
-        $t2f2 = "";
-        $t2f3 = "";
-    }
+            $t2f1 = $row["feature_one"];
+            $t2f2 = $row["feature_two"];
+            $t2f3 = $row["feature_three"];
+        } else {
+            $t2f1 = "";
+            $t2f2 = "";
+            $t2f3 = "";
+        }
 
-    if ($tier3->num_rows > 0) {
-        $row = $tier3->fetch_assoc();
+        if ($tier3->num_rows > 0) {
+            $row = $tier3->fetch_assoc();
 
-        $t3f1 = $row["feature_one"];
-        $t3f2 = $row["feature_two"];
-        $t3f3 = $row["feature_three"];
-    } else {
-        $t3f1 = "";
-        $t3f2 = "";
-        $t3f3 = "";
-    }
+            $t3f1 = $row["feature_one"];
+            $t3f2 = $row["feature_two"];
+            $t3f3 = $row["feature_three"];
+        } else {
+            $t3f1 = "";
+            $t3f2 = "";
+            $t3f3 = "";
+        }
+    //end of initialization
+    
     // If the user clicked the logout button
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logout"])) {
         // Unset all session variables (id, username)
@@ -131,7 +133,152 @@
                     // Close the statement
                     $stmt->close();
                 }
+            //Update CV
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-cv-btn"])){
+                    require_once 'dbConfig.php';
+                    $cv = $_FILES["new-cv-file"];
+                    $add_notes = $_POST["new-cv-notes"];
+                    $index = 1;
+                    
+                    $fileName = basename($cv['name']);
+                    $fileSize = $cv['size'];
+                    $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+                    
+                    $allowed = array('pdf');
+                    
+                    if (in_array($fileType, $allowed)) {
+                        if ($fileSize < 3000000) { //3 MB maximum size
+                            $cvfile = $cv['tmp_name'];
+                            $fileContent = file_get_contents($cvfile);
+                    
+                            // Prepare an SQL statement
+                            $stmt = $conn->prepare("UPDATE curri_vitae SET additional_notes = ?, cv_file = ? WHERE id = ?");
+                            $stmt->bind_param("ssi", $add_notes, $fileContent, $index);
+                    
+                            // Execute the statement
+                            if ($stmt->execute()) {
+                                echo '<script>alert("Curriculum Vitae Updated!")</script>'; 
+                            } else {
+                                echo '<script>alert("Error updating record: " . $stmt->error)</script>';
+                            }
+                    
+                            $stmt->close();
+                        } else {
+                            echo '<script>alert("File Size is too large.")</script>'; 
+                        }
+                    } else {
+                        echo '<script>alert("Invalid File Type. Only .pdf file is allowed.")</script>'; 
+                    }
+                }
         //EDIT PROJECTS SECTION
+            //function to upload image
+                function upload_image($img, $img_title, $tbl_name, $index, $conn) {
+                    $fileName = basename($img['name']);
+                    $fileSize = $img['size'];
+                    $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+                
+                    $allowed = array('jpg', 'jpeg', 'png');
+                
+                    if (in_array($fileType, $allowed)) {
+                        if ($fileSize < 3000000) { //3 MB maximum image
+                            $image = $img['tmp_name'];
+                            $imageContent = file_get_contents($image);
+                
+                            // Prepare an SQL statement
+                            $stmt = $conn->prepare("UPDATE $tbl_name SET image = ?, image_title = ? WHERE id = ?");
+                            $stmt->bind_param("ssi", $imageContent, $img_title, $index);
+                
+                            // Execute the statement
+                            if ($stmt->execute()) {
+                                echo '<script>alert("Displayed Profile Updated!")</script>'; 
+                            } else {
+                                echo '<script>alert("Error updating record: " . $stmt->error)</script>';
+                            }
+                
+                            $stmt->close();
+                        } else {
+                            echo '<script>alert("File Size is too large.")</script>'; 
+                        }
+                    } else {
+                        echo '<script>alert("Invalid File Type. Only .jpg, .jpeg, .png files are allowed.")</script>'; 
+                    }
+                }
+
+            //Edit Recent Art
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["art1-btn"])){
+                    require_once 'dbConfig.php';
+                    $image = $_FILES["art-1"];
+                    $image_title = $_POST["art-1-title"];
+                    $tbl_name = "recent_art";
+                    $index = 1;
+                    upload_image($image, $image_title, $tbl_name, $index, $conn);
+                }
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["art2-btn"])){
+                    require_once 'dbConfig.php'; 
+                    $image = $_FILES["art-2"];
+                    $image_title = $_POST["art-2-title"];
+                    $tbl_name = "recent_art";
+                    $index = 2;
+                    upload_image($image, $image_title, $tbl_name, $index, $conn);
+                }
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["art3-btn"])){
+                    require_once 'dbConfig.php';
+                    $image = $_FILES["art-3"];
+                    $image_title = $_POST["art-3-title"];
+                    $tbl_name = "recent_art";
+                    $index = 3;
+                    upload_image($image, $image_title, $tbl_name, $index, $conn);
+                }
+            //Edit Recent Code
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["code1-btn"])){
+                    require_once 'dbConfig.php';
+                    $image = $_FILES["code-1"];
+                    $image_title = $_POST["code-1-title"];
+                    $tbl_name = "recent_code";
+                    $index = 1;
+                    upload_image($image, $image_title, $tbl_name, $index, $conn);
+                }
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["code2-btn"])){
+                    require_once 'dbConfig.php';
+                    $image = $_FILES["code-2"];
+                    $image_title = $_POST["code-2-title"];
+                    $tbl_name = "recent_code";
+                    $index = 2;
+                    upload_image($image, $image_title, $tbl_name, $index, $conn);
+                }
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["code3-btn"])){
+                    require_once 'dbConfig.php';
+                    $image = $_FILES["code-3"];
+                    $image_title = $_POST["code-3-title"];
+                    $tbl_name = "recent_code";
+                    $index = 3;
+                    upload_image($image, $image_title, $tbl_name, $index, $conn);
+                }
+            //Edit Recent Games
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["game1-btn"])){
+                    require_once 'dbConfig.php';
+                    $image = $_FILES["game-1"];
+                    $image_title = $_POST["game-1-title"];
+                    $tbl_name = "recent_game";
+                    $index = 1;
+                    upload_image($image, $image_title, $tbl_name, $index, $conn);
+                }
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["game2-btn"])){
+                    require_once 'dbConfig.php';
+                    $image = $_FILES["game-2"];
+                    $image_title = $_POST["game-2-title"];
+                    $tbl_name = "recent_game";
+                    $index = 2;
+                    upload_image($image, $image_title, $tbl_name, $index, $conn);
+                }
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["game3-btn"])){
+                    require_once 'dbConfig.php';
+                    $image = $_FILES["game-3"];
+                    $image_title = $_POST["game-3-title"];
+                    $tbl_name = "recent_game";
+                    $index = 3;
+                    upload_image($image, $image_title, $tbl_name, $index, $conn);
+                }
         //EDIT COMMISSIONS SECTION
             //Editing Tier 1 in Commissions Section
                 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["tier1-btn"])){
@@ -207,8 +354,9 @@
                 </div>
         </nav>
     
+        <!-- Edit About Section -->
         <section id="edit-about">
-            <h1 class="title">Edit About Me Section</h1>
+            <h1 class="title">Edit About Me</h1>
             <div class="tab-container">
                 <div class="tab-1">
                     <h2 class="subtitle">About Me (Experience 1)</h2>
@@ -254,15 +402,159 @@
                             <input type="submit" name="about-btn" value="Edit About Me" class="btn btn-color-1">
                         </div>
                     </form>
+                <br>
+                <br>
+                <h2 class="subtitle">Update Curriculum Vitae:</h2>
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                        <div>
+                            <p>Upload New Curriculum Vitae:</p>
+                            <input type="file" name="new-cv-file" class="btn-color-1" required>
+                        </div>
+                            <p>Additional Notes:</p>
+                            <input type="text" name="new-cv-notes" class="input-box" required>
+                        <div>
+                            <input type="submit" name="update-cv-btn" value="Update CV" class="btn btn-color-1">
+                        </div>
+                    </form>
+            </div>
+        </section>
+        <hr>
+        
+        <!-- Edit Portfolio Section -->
+        <section id="edit-portfolio"> 
+            <h1 class="title">Edit Displayed Portfolio</h1>
+            <div class="tab-container">
+                <div class="tab-1"> <!-- Edit Recent Art -->
+                    <h2 class="subtitle">Edit Recent Art</h2>
+                        <div class="upload-img">
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                <div>
+                                    <p>Artwork 1 Thumbnail:</p>
+                                    <input type="file" name="art-1" class="btn-color-1" required>
+                                    <p>Title:</p>
+                                    <input type="text" name="art-1-title" class="input-box" required>
+                                </div>
+                                <div>
+                                    <input type="submit" name="art1-btn" value="Edit Artwork 1" class="btn btn-color-1">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="upload-img">
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                <div>
+                                    <p>Artwork 2 Thumbnail:</p>
+                                    <input type="file" name="art-2" class="btn-color-1" required>
+                                    <p>Title:</p>
+                                    <input type="text" name="art-2-title" class="input-box" required>
+                                </div>
+                                <div>
+                                    <input type="submit" name="art2-btn" value="Edit Artwork 2" class="btn btn-color-1">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="upload-img">
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                <div>
+                                    <p>Artwork 3 Thumbnail:</p>
+                                    <input type="file" name="art-3" class="btn-color-1" required>
+                                    <p>Title:</p>
+                                    <input type="text" name="art-3-title" class="input-box" required>
+                                </div>
+                                <div>
+                                    <input type="submit" name="art3-btn" value="Edit Artwork 3" class="btn btn-color-1">
+                                </div>
+                            </form>
+                        </div>
+                </div>
+                <div class="tab-1"> <!-- Edit Recent Programs -->
+                    <h2 class="subtitle">Edit Recent Programs</h2>
+                        <div class="upload-img">
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                <div>
+                                    <p>Program 1 Thumbnail:</p>
+                                    <input type="file" name="code-1" class="btn-color-1" required>
+                                    <p>Title:</p>
+                                    <input type="text" name="code-1-title" class="input-box" required>
+                                </div>
+                                <div>
+                                    <input type="submit" name="code1-btn" value="Edit Program 1" class="btn btn-color-1">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="upload-img">
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                <div>
+                                    <p>Program 2 Thumbnail:</p>
+                                    <input type="file" name="code-2" class="btn-color-1" required>
+                                    <p>Title:</p>
+                                    <input type="text" name="code-2-title" class="input-box" required>
+                                </div>
+                                <div>
+                                    <input type="submit" name="code2-btn" value="Edit Program 2" class="btn btn-color-1">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="upload-img">
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                <div>
+                                    <p>Program 3 Thumbnail:</p>
+                                    <input type="file" name="code-3" class="btn-color-1" required>
+                                    <p>Title:</p>
+                                    <input type="text" name="code-3-title" class="input-box" required>
+                                </div>
+                                <div>
+                                    <input type="submit" name="code3-btn" value="Edit Program 3" class="btn btn-color-1">
+                                </div>
+                            </form>
+                        </div>
+                </div>
+                <div class="tab-1"> <!-- Edit Recent Games -->
+                    <h2 class="subtitle">Edit Recent Games</h2>
+                        <div class="upload-img">
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                <div>
+                                    <p>Game 1 Thumbnail:</p>
+                                    <input type="file" name="game-1" class="btn-color-1" required>
+                                    <p>Title:</p>
+                                    <input type="text" name="game-1-title" class="input-box" required>
+                                </div>
+                                <div>
+                                    <input type="submit" name="game1-btn" value="Edit Game 1" class="btn btn-color-1">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="upload-img">
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                <div>
+                                    <p>Game 2 Thumbnail:</p>
+                                    <input type="file" name="game-2" class="btn-color-1" required>
+                                    <p>Title:</p>
+                                    <input type="text" name="game-2-title" class="input-box" required>
+                                </div>
+                                <div>
+                                    <input type="submit" name="game2-btn" value="Edit Game 2" class="btn btn-color-1">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="upload-img">
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                <div>
+                                    <p>Game 3 Thumbnail:</p>
+                                    <input type="file" name="game-3" class="btn-color-1" required>
+                                    <p>Title:</p>
+                                    <input type="text" name="game-3-title" class="input-box" required>
+                                </div>
+                                <div>
+                                    <input type="submit" name="game3-btn" value="Edit Game 3" class="btn btn-color-1">
+                                </div>
+                            </form>
+                        </div>
+                </div>
             </div>
         </section>
         <hr>
 
-        <section id="edit-recent-works">
-            <h1 class="title">Edit Displayed Portfolio</h1>
-        </section>
-        <hr>
-
+        <!-- Edit Commissions Section -->
         <section id="edit-comms">
             <h1 class="title">Edit Commission Info</h1>
             <div class="tab-container">

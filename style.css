@@ -460,3 +460,17 @@ footer p{
 #edit-comms .tab-1{
     padding: 1rem;
 }
+
+#admin #edit-portfolio{
+    position: relative;
+    height: max-content;
+}
+
+#edit-portfolio .tab-1{
+    padding: 1rem;
+    border: #212f5c 0.1rem solid;
+}
+
+#edit-portfolio .upload-img{
+    margin-bottom: 3rem;
+}

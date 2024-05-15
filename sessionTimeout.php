@@ -24,5 +24,9 @@
             <input type="submit" value="Log In" class="btn btn-color-1">
         </form>
     </div>
+    <div id="admin-mobile">
+        <h1>Oops..</h1>
+        <p>Admin Portal is not available on Mobile. <br>Login on Desktop to access the Admin Portal.</p>
+    </div>
 </body>
 </html>
