@@ -359,7 +359,7 @@
         <h1 class="title">Commission Me</h1>
         <div class="comms-details-container">
             <div class="about-containers">
-                <div class="details-container">
+                <div class="details-container"> <!-- TIER 1 -->
                     <h2 class="subtitle">Tier 1</h2>
                     <div class="article-container">
                         <article>
@@ -382,7 +382,7 @@
                         </article>
                     </div>
                 </div>
-                <div class="details-container">
+                <div class="details-container"> <!-- TIER 2 -->
                     <h2 class="subtitle">Tier 2</h2>
                     <div class="article-container">
                         <article>
@@ -405,7 +405,7 @@
                         </article>
                     </div>
                 </div>
-                <div class="details-container">
+                <div class="details-container"> <!-- TIER 3 -->
                     <h2 class="subtitle">Tier 3</h2>
                     <div class="article-container">
                         <article>
