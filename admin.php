@@ -133,43 +133,7 @@
                     // Close the statement
                     $stmt->close();
                 }
-            //Update CV
-                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update-cv-btn"])){
-                    require_once 'dbConfig.php';
-                    $cv = $_FILES["new-cv-file"];
-                    $add_notes = $_POST["new-cv-notes"];
-                    $index = 1;
-                    
-                    $fileName = basename($cv['name']);
-                    $fileSize = $cv['size'];
-                    $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
-                    
-                    $allowed = array('pdf');
-                    
-                    if (in_array($fileType, $allowed)) {
-                        if ($fileSize < 3000000) { //3 MB maximum size
-                            $cvfile = $cv['tmp_name'];
-                            $fileContent = file_get_contents($cvfile);
-                    
-                            // Prepare an SQL statement
-                            $stmt = $conn->prepare("UPDATE curri_vitae SET additional_notes = ?, cv_file = ? WHERE id = ?");
-                            $stmt->bind_param("ssi", $add_notes, $fileContent, $index);
-                    
-                            // Execute the statement
-                            if ($stmt->execute()) {
-                                echo '<script>alert("Curriculum Vitae Updated!")</script>'; 
-                            } else {
-                                echo '<script>alert("Error updating record: " . $stmt->error)</script>';
-                            }
-                    
-                            $stmt->close();
-                        } else {
-                            echo '<script>alert("File Size is too large.")</script>'; 
-                        }
-                    } else {
-                        echo '<script>alert("Invalid File Type. Only .pdf file is allowed.")</script>'; 
-                    }
-                }
+            
         //EDIT PROJECTS SECTION
             //function to upload image
                 function upload_image($img, $img_title, $tbl_name, $index, $conn) {
@@ -400,20 +364,6 @@
                         </div>
                         <div>
                             <input type="submit" name="about-btn" value="Edit About Me" class="btn btn-color-1">
-                        </div>
-                    </form>
-                <br>
-                <br>
-                <h2 class="subtitle">Update Curriculum Vitae:</h2>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
-                        <div>
-                            <p>Upload New Curriculum Vitae:</p>
-                            <input type="file" name="new-cv-file" class="btn-color-1" required>
-                        </div>
-                            <p>Additional Notes:</p>
-                            <input type="text" name="new-cv-notes" class="input-box" required>
-                        <div>
-                            <input type="submit" name="update-cv-btn" value="Update CV" class="btn btn-color-1">
                         </div>
                     </form>
             </div>
