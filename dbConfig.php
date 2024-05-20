@@ -1,9 +1,15 @@
 <?php
-//CHANGE VARIABLE NAMES WHEN DEPLOYING TO INFINITYFREE
-$servername = "localhost"; //CHANGE THIS
-$username = "root"; //CHANGE THIS
-$password = ""; //CHANGE THIS
-$dbname = "jrmb_portfolio_db"; //CHANGE THIS
+//LOCALHOST
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "jrmb_portfolio_db";
+
+//INFINITYFREE HOSTING
+// $servername = "sql302.infinityfree.com"; 
+// $username = "if0_36554462"; 
+// $password = "Kangsdomain19"; 
+// $dbname = "if0_36554462_jrmb_portfolio_db"; 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

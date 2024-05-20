@@ -136,35 +136,37 @@
             
         //EDIT PROJECTS SECTION
             //function to upload image
-                function upload_image($img, $img_title, $tbl_name, $index, $conn) {
-                    $fileName = basename($img['name']);
-                    $fileSize = $img['size'];
-                    $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
-                
-                    $allowed = array('jpg', 'jpeg', 'png');
-                
-                    if (in_array($fileType, $allowed)) {
-                        if ($fileSize < 3000000) { //3 MB maximum image
-                            $image = $img['tmp_name'];
-                            $imageContent = file_get_contents($image);
-                
-                            // Prepare an SQL statement
-                            $stmt = $conn->prepare("UPDATE $tbl_name SET image = ?, image_title = ? WHERE id = ?");
-                            $stmt->bind_param("ssi", $imageContent, $img_title, $index);
-                
-                            // Execute the statement
-                            if ($stmt->execute()) {
-                                echo '<script>alert("Displayed Profile Updated!")</script>'; 
+                if(!function_exists('upload_image')){
+                    function upload_image($img, $img_title, $tbl_name, $index, $conn) {
+                        $fileName = basename($img['name']);
+                        $fileSize = $img['size'];
+                        $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+                    
+                        $allowed = array('jpg', 'jpeg', 'png');
+                    
+                        if (in_array($fileType, $allowed)) {
+                            if ($fileSize < 3000000) { //3 MB maximum image
+                                $image = $img['tmp_name'];
+                                $imageContent = file_get_contents($image);
+                    
+                                // Prepare an SQL statement
+                                $stmt = $conn->prepare("UPDATE $tbl_name SET image = ?, image_title = ? WHERE id = ?");
+                                $stmt->bind_param("ssi", $imageContent, $img_title, $index);
+                    
+                                // Execute the statement
+                                if ($stmt->execute()) {
+                                    echo '<script>alert("Displayed Profile Updated!")</script>'; 
+                                } else {
+                                    echo '<script>alert("Error updating record: " . $stmt->error)</script>';
+                                }
+                    
+                                $stmt->close();
                             } else {
-                                echo '<script>alert("Error updating record: " . $stmt->error)</script>';
+                                echo '<script>alert("File Size is too large.")</script>'; 
                             }
-                
-                            $stmt->close();
                         } else {
-                            echo '<script>alert("File Size is too large.")</script>'; 
+                            echo '<script>alert("Invalid File Type. Only .jpg, .jpeg, .png files are allowed.")</script>'; 
                         }
-                    } else {
-                        echo '<script>alert("Invalid File Type. Only .jpg, .jpeg, .png files are allowed.")</script>'; 
                     }
                 }
 
