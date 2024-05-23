@@ -442,7 +442,7 @@
         <h1 class="title">Send Me a Message</h1>
             <div class="contact-info-container">
                 
-                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
                     <div class="contact-details">
 
                         <!-- CONTACT ME API customization -->
@@ -487,5 +487,20 @@
     </footer>
     <script src="https://web3forms.com/client/script.js" async defer></script>
     <script src="script.js"></script>
+    <!-- Script to ensure captcha response-->
+    <script>
+        const form = document.getElementById('contact-form');
+
+        form.addEventListener('submit', function(e) {
+
+            const hCaptcha = form.querySelector('textarea[name=h-captcha-response]').value;
+
+            if (!hCaptcha) {
+                e.preventDefault();
+                alert("Please fill out captcha field")
+                return
+            }
+        });
+    </script>
 </body>
 </html>
