@@ -250,7 +250,7 @@
 
     <!-- About Section -->
     <section id="about">
-        <img src="./assets/up.png" alt="arrow up" class="icon arrow-up" onclick="location.href='./#desktop-nav'">
+        <img src="./assets/up.png" alt="arrow up" class="icon arrow-up" onclick="location.href='index.php#desktop-nav'">
         <h1 class="title">About Me</h1>
         <div class="section-container">
             <!-- about me picture -->
@@ -281,12 +281,12 @@
                 </div> <!-- end of about me text -->
             </div> <!-- end of about me details -->
         </div>
-        <img src="./assets/down.png" alt="arrow down" class="icon arrow-down" onclick="location.href='./#projects'">
+        <img src="./assets/down.png" alt="arrow down" class="icon arrow-down" onclick="location.href='index.php#projects'">
     </section> <!-- End of About Me Section -->
     
     <!-- Projects Section -->
     <section id="projects">
-        <img src="./assets/up.png" alt="arrow up" class="icon arrow-up" onclick="location.href='./#about'">
+        <img src="./assets/up.png" alt="arrow up" class="icon arrow-up" onclick="location.href='index.php#about'">
         <h1 class="title">Recent Works</h1>
         <div class="project-details-container"> 
             <div class="details-container"> <!-- IN ART -->
@@ -350,12 +350,12 @@
                 </div>
             </div>
         </div>
-        <img src="./assets/down.png" alt="arrow down" class="icon arrow-down" onclick="location.href='./#commissions'">
+        <img src="./assets/down.png" alt="arrow down" class="icon arrow-down" onclick="location.href='index.php#commissions'">
     </section><!-- End of Projects Section -->
 
     <!-- Commissions Section -->
     <section id="commissions">
-        <img src="./assets/up.png" alt="arrow up" class="icon arrow-up" onclick="location.href='./#projects'">
+        <img src="./assets/up.png" alt="arrow up" class="icon arrow-up" onclick="location.href='index.php#projects'">
         <h1 class="title">Commission Me</h1>
         <div class="comms-details-container">
             <div class="about-containers">
@@ -433,12 +433,12 @@
         <div class="btn-container">
             <button class="btn btn-color-1"  onclick="window.open('https://forms.gle/NXj5ycnFXw59zWf77')">See Form</button>
         </div>
-        <img src="./assets/down.png" alt="arrow down" class="icon arrow-down" onclick="location.href='./#contact'">
+        <img src="./assets/down.png" alt="arrow down" class="icon arrow-down" onclick="location.href='index.php#contact'">
     </section> <!-- End of Commissions Section -->
 
     <!-- Contact Section -->
     <section id="contact">
-        <img src="./assets/up.png" alt="arrow up" class="icon arrow-up" onclick="location.href='./#commissions'">
+        <img src="./assets/up.png" alt="arrow up" class="icon arrow-up" onclick="location.href='index.php#commissions'">
         <h1 class="title">Send Me a Message</h1>
             <div class="contact-info-container">
                 
@@ -457,7 +457,7 @@
                         </div>
                         <div class="input-container">
                             <p>Your Email</p>
-                            <input type="text" class="input-box" name="email" required/> <br>
+                            <input type="email" class="input-box" name="email" required/> <br>
                         </div>
                         <div class="input-container">
                             <p>Message Subject</p>

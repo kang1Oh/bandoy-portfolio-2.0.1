@@ -6,7 +6,7 @@ black - #090909
 red - #b70202
 white - #ffffff
 grey - c2c2c2
-blue - #212f5c
+blue - #436fff
 */
 
 
@@ -48,7 +48,7 @@ nav{
     list-style: none;
 }
 a{
-    color: #212f5c;
+    color: #436fff;
     text-decoration: none;
     text-decoration-color: #c2c2c2;
 }
@@ -83,7 +83,7 @@ a:hover{
 .hamburger-icon span{
     width: 100%;
     height: 2px;
-    background-color: #212f5c;
+    background-color: #436fff;
     transition: all 0.3 ease-in-out;
 }
 .menu-links{
@@ -101,7 +101,7 @@ a:hover{
     padding: 10px;
     text-align: center;
     font-size: 1.5rem;
-    color: #212f5c;
+    color: #436fff;
     text-decoration: none;
     transition: all 0.3 ease-in-out;
 }
@@ -206,11 +206,11 @@ section{
     border-radius: 2rem;
 }
 .btn-color-1{
-    border: #212f5c 0.1rem solid;
+    border: #436fff 0.1rem solid;
 }
 .btn-color-1:hover{
     cursor: pointer;
-    background-color: #212f5c;
+    background-color: #436fff;
 }
 .btn-color-1{
     background-color: #090909;
@@ -241,15 +241,15 @@ section{
     text-align: center;
 }
 .subtitle{
-    color: #212f5c;
+    color: #436fff;
 }
 .details-container{
     padding: 1.5rem;
     flex: 1;
     background: #090909;
     border-radius: 2rem;
-    border: #212f5c 0.1rem solid;
-    border-color: #212f5c;
+    border: #436fff 0.1rem solid;
+    border-color: #436fff;
     text-align: center;
 }
 .section-container{
@@ -307,8 +307,8 @@ section{
     border-radius: 2rem;
     height: 45vh;
     border-radius: 2rem;
-    border: #212f5c 0.1rem solid;
-    border-color: #212f5c;
+    border: #436fff 0.1rem solid;
+    border-color: #436fff;
 
 }
 
@@ -355,8 +355,8 @@ article{
     color: #090909;
     background: #c2c2c2;
     border-radius: 1rem;
-    border: #212f5c 0.1rem solid;
-    border-color: #212f5c;
+    border: #436fff 0.1rem solid;
+    border-color: #436fff;
 }
 .input-box:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #c2c2c2 inset;
@@ -392,7 +392,7 @@ footer p{
     margin-bottom: 1rem;
 }
 .login-form label{
-    color: #212f5c;
+    color: #436fff;
 }
 .login-form div{
     margin: 0.5rem;
@@ -468,7 +468,7 @@ footer p{
 
 #edit-portfolio .tab-1{
     padding: 1rem;
-    border: #212f5c 0.1rem solid;
+    border: #436fff 0.1rem solid;
 }
 
 #edit-portfolio .upload-img{
